@@ -36,12 +36,5 @@ Czy uda Ci się utrzymać porządek w chaotycznym świecie? Stań do walki i zos
 
 ---
 
-## Contribution
-Contributions are welcome! If you want to report bugs or suggest features:
-1. Open an issue on this repository.
-2. Submit a pull request with your suggested changes.
-
----
-
 ## License
 This project is licensed under the Creative Commons License. See the [LICENSE](./license.txt) file for more details.
