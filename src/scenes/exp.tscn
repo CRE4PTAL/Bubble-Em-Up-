@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnf28nbxt06ql"]
+
+[ext_resource type="Texture2D" uid="uid://bdacctcaysb5d" path="res://assets/Characters/IKONKI_base.png" id="1_bs70s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wu08p"]
+radius = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7afk"]
+atlas = ExtResource("1_bs70s")
+region = Rect2(0, 0, 15.8409, 15.0247)
+
+[node name="EXP" type="Area2D" groups=["exp"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_wu08p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_x7afk")
