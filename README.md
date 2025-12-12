@@ -1,40 +1,34 @@
-# Bubble 'Em Up!
+# Bubble 'Em Up! 🧼
 
-**Bubble 'Em Up!** to pixelowa gra 2D typu **rogue-like**, stworzona w **Godot Engine** podczas 48-godzinnego GameJamu. Gracz porusza się po arenie, automatycznie wystrzeliwując bąbelki, którymi może eliminować przeciwników-wirusy. Każdy pokonany wróg upuszcza „mydełko” (EXP), pozwalające na ulepszanie postaci.
+Dynamiczna gra typu **Action Rogue-like 2D** stworzona w silniku Godot. Projekt powstał w zaledwie 48 godzin podczas wydarzenia typu **Game Jam**, jako efekt współpracy małego zespołu deweloperskiego.
 
----
+Tematyka gry nawiązuje do walki o higienę – gracz steruje postacią walczącą z falami wirusów za pomocą baniek mydlanych.
 
-## 🎮 Mechaniki gry
+## 🛠 Technologie
+* **Silnik:** Godot Engine (2D)
+* **Język:** GDScript
+* **Grafika:** Pixel Art (Własne assety)
 
-- Automatyczne strzelanie bąbelkami – postać w stałych odstępach czasu generuje bąbelki, które gracz może nakierowywać na przeciwników.
-- Przeciwnicy typu wirusy – podążają za graczem i atakują po kontakcie.
-- EXP w formie mydełek – pokonani wrogowie upuszczają doświadczenie.
-- System levelowania z trzema ulepszeniami:
-  - prędkość poruszania się,
-  - attack speed,
-  - regeneracja HP.
-- Lekko "przegięty" rogue-like – ze względu na brak balansu można osiągnąć attack speed równy **0 sekund**, co tworzy zabawną „power fantasy” (wynik ograniczonego czasu GameJamu).
+## 🌟 Główne funkcjonalności
+* **Auto-shooter Mechanics:** Postać automatycznie generuje pociski (bańki), a zadaniem gracza jest manewrowanie i celowanie w przeciwników.
+* **System Levelowania:** Pokonani wrogowie upuszczają "Mydełka" (EXP). Zebranie odpowiedniej ilości pozwala na awans postaci.
+* **Drzewko Rozwoju (RNG):** Przy każdym awansie gracz wybiera jedno z trzech losowych ulepszeń:
+  * Prędkość poruszania się (Movement Speed)
+  * Szybkość ataku (Attack Speed)
+  * Regeneracja zdrowia (HP Regen)
 
----
+## 💡 Wyzwania i "Feature" Projektu
+Największym wyzwaniem był limit czasowy (48h). Z tego powodu zdecydowaliśmy się na podejście **"Power Fantasy"**.
+W przeciwieństwie do gier, które karzą gracza, *Bubble 'Em Up!* pozwala na **nielimitowane skalowanie statystyk**. 
+* **Ciekawostka:** Przy odpowiednio długiej rozgrywce, gracz może osiągnąć "Attack Speed" bliski zeru sekund, zamieniając się w niepowstrzymaną maszynę do produkcji baniek. Testowaliśmy granice silnika Godot przy generowaniu setek obiektów na sekundę.
 
-## 🛠️ Technologie
+## 👥 Zespół i Rola
+Projekt zrealizowany zespołowo. Moja rola obejmowała:
+* Implementację poruszania się postaci i fizyki pocisków.
+* System zbierania doświadczenia i UI wyboru ulepszeń.
 
-- Godot Engine (2D)
-- GDScript
-- Pixel art (retro style)
+## 💻 Uruchomienie (Godot)
 
----
-
-## 🎯 Cel projektu
-
-Prototyp rogue-lika stworzony w 48 godzin, którego celem było przećwiczenie:
-- budowania prostych AI przeciwników,
-- implementacji systemu levelowania,
-- tworzenia gry w Godocie z użyciem GDScript,
-- efektywnej pracy zespołowej pod presją czasu.
-
----
-
-## 🚀 Status
-
-Projekt ukończony jako prototyp GameJamowy. Mimo braku balansu gra zapewnia dynamiczną, przesadzoną rozgrywkę i doskonale pokazuje proces powstawania rozbudowywalnych mechanik w krótkim czasie.
+1. Pobierz repozytorium.
+2. Zaimportuj projekt w **Godot Engine**.
+3. Uruchom scenę `Main.tscn`.
