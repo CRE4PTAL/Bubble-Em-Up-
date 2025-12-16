@@ -1,0 +1,98 @@
+[gd_scene load_steps=7 format=3 uid="uid://cbltqfmnjvdun"]
+
+[ext_resource type="Script" uid="uid://brnbw1bcla8qf" path="res://scripts/game_over.gd" id="1_87khw"]
+[ext_resource type="Texture2D" uid="uid://cy7siotg8k1yb" path="res://assets/Background Tiles/menu_background.png" id="2_scrsq"]
+
+[sub_resource type="Resource" id="Resource_dh54o"]
+metadata/__load_path__ = "res://themes/MainMenuButton.tres"
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_i2xp1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wv78b"]
+font_size = 50
+
+[sub_resource type="Resource" id="Resource_gob2e"]
+metadata/__load_path__ = "res://themes/MainMenuButton.tres"
+
+[node name="Over" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 355)
+script = ExtResource("1_87khw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -33.0
+offset_right = 224.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuBackground" type="Sprite2D" parent="VBoxContainer"]
+position = Vector2(227, 38)
+scale = Vector2(1.003, 1.003)
+texture = ExtResource("2_scrsq")
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Resource_dh54o")
+text = "RETRY"
+icon = SubResource("ViewportTexture_i2xp1")
+icon_alignment = 1
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "QUIT"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 0.398
+anchor_right = 0.5
+anchor_bottom = 0.398
+offset_left = -226.0
+offset_top = -34.56
+offset_right = 222.0
+offset_bottom = 34.44
+pivot_offset = Vector2(229, 35)
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_wv78b")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -33.0
+offset_right = 224.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Resource_gob2e")
+text = "RETRY"
+icon = SubResource("ViewportTexture_i2xp1")
+icon_alignment = 1
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "MENU"
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_menu_button_pressed"]

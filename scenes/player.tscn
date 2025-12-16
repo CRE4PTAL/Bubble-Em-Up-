@@ -1,0 +1,82 @@
+[gd_scene load_steps=14 format=3 uid="uid://c61625ir12l52"]
+
+[ext_resource type="Script" uid="uid://cxf0ruiu7d5b8" path="res://scripts/player.gd" id="1_trfut"]
+[ext_resource type="PackedScene" uid="uid://b5h23qggiyu4v" path="res://scenes/Bubble.tscn" id="2_umso2"]
+[ext_resource type="Texture2D" uid="uid://qvn377unkc1x" path="res://assets/Characters/MRCLEAN_idle_R_tiles.png" id="3_cmg6u"]
+[ext_resource type="Texture2D" uid="uid://b6rg8wldaj3b3" path="res://assets/Characters/MRCLEAN_walk_r_tiles_.png" id="4_dqct6"]
+[ext_resource type="AudioStream" uid="uid://snkchan3k8oi" path="res://assets/Audio/bubble-pop.mp3" id="5_frfbm"]
+[ext_resource type="AudioStream" uid="uid://daopj17v82t73" path="res://assets/Audio/LevelUp.mp3" id="6_0w2op"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t150s"]
+atlas = ExtResource("3_cmg6u")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8x45m"]
+atlas = ExtResource("3_cmg6u")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0on0"]
+atlas = ExtResource("4_dqct6")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2su4"]
+atlas = ExtResource("4_dqct6")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xyvr"]
+atlas = ExtResource("4_dqct6")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w316j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t150s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8x45m")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0on0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2su4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xyvr")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 7.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6btef"]
+radius = 11.0
+height = 36.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_trfut")
+bubble_scene = ExtResource("2_umso2")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-1, -2)
+sprite_frames = SubResource("SpriteFrames_w316j")
+animation = &"walk"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_6btef")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="BubbleShotAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_frfbm")
+
+[node name="LevelUp" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_0w2op")

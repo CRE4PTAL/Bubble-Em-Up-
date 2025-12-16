@@ -1,0 +1,78 @@
+[gd_scene load_steps=11 format=3 uid="uid://b5h23qggiyu4v"]
+
+[ext_resource type="Script" uid="uid://d1h8sbi54vrpx" path="res://scripts/bubble.gd" id="1_6rf06"]
+[ext_resource type="Texture2D" uid="uid://cif30pgxwefb7" path="res://assets/Characters/BANKI.png" id="2_myh4j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrflb"]
+atlas = ExtResource("2_myh4j")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpkx7"]
+atlas = ExtResource("2_myh4j")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ci3oi"]
+atlas = ExtResource("2_myh4j")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1ta5"]
+atlas = ExtResource("2_myh4j")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxkol"]
+atlas = ExtResource("2_myh4j")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2okp"]
+atlas = ExtResource("2_myh4j")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gx23k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrflb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpkx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ci3oi")
+}],
+"loop": false,
+"name": &"create",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1ta5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxkol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2okp")
+}],
+"loop": false,
+"name": &"destroy",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3s0rb"]
+radius = 6.0
+
+[node name="Bubble" type="Area2D" groups=["player_bubble"]]
+script = ExtResource("1_6rf06")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_gx23k")
+animation = &"create"
+autoplay = "create"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player_bubble"]]
+light_mask = 4
+visibility_layer = 8
+shape = SubResource("CircleShape2D_3s0rb")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://bbq876ntebmnt"]
+
+[ext_resource type="Script" uid="uid://qhsrtlay4vlc" path="res://scripts/enemy.gd" id="1_qfkhw"]
+[ext_resource type="PackedScene" uid="uid://cnf28nbxt06ql" path="res://scenes/exp.tscn" id="2_445o3"]
+[ext_resource type="Texture2D" uid="uid://bq24ssfs7bqbw" path="res://assets/Characters/WIRUS_idle_tiles.png" id="2_arw0x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eoyuh"]
+atlas = ExtResource("2_arw0x")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqmop"]
+atlas = ExtResource("2_arw0x")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsn8o"]
+atlas = ExtResource("2_arw0x")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21yv4"]
+atlas = ExtResource("2_arw0x")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v7xlg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eoyuh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqmop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsn8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21yv4")
+}],
+"loop": true,
+"name": &"virus",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qu1s"]
+size = Vector2(123, 120)
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_qfkhw")
+exp_scene = ExtResource("2_445o3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_v7xlg")
+animation = &"virus"
+autoplay = "virus"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
+light_mask = 8
+visibility_layer = 4
+position = Vector2(-1.77636e-15, -1)
+scale = Vector2(0.2, 0.2)
+shape = SubResource("RectangleShape2D_8qu1s")
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["enemy"]]
+light_mask = 8
+visibility_layer = 4
+position = Vector2(-1.77636e-15, -1)
+scale = Vector2(0.2, 0.2)
+shape = SubResource("RectangleShape2D_8qu1s")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

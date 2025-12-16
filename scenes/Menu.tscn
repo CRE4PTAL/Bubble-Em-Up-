@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfbvlw64xs5t8"]
+
+[ext_resource type="Script" uid="uid://bvegfwn2rb7ay" path="res://scripts/menu.gd" id="1_0bjst"]
+[ext_resource type="Texture2D" uid="uid://cy7siotg8k1yb" path="res://assets/Background Tiles/menu_background.png" id="2_oh3gi"]
+[ext_resource type="Texture2D" uid="uid://d37edccy6c7y7" path="res://assets/Characters/Game_name_icon-render.png" id="4_a50t3"]
+[ext_resource type="AudioStream" uid="uid://ceo5h81gyirfu" path="res://assets/Audio/Soundtrack.wav" id="4_b1mya"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_i2xp1"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0bjst")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.598
+anchor_right = 0.5
+anchor_bottom = 0.598
+offset_left = -224.0
+offset_top = -103.56
+offset_right = 224.0
+offset_bottom = -37.56
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuBackground" type="Sprite2D" parent="VBoxContainer"]
+position = Vector2(227, 38)
+scale = Vector2(1.003, 1.003)
+texture = ExtResource("2_oh3gi")
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Start"
+icon = SubResource("ViewportTexture_i2xp1")
+icon_alignment = 1
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="GameNameIcon-render" type="Sprite2D" parent="VBoxContainer"]
+position = Vector2(221, -84)
+scale = Vector2(1.40533, 1.52813)
+texture = ExtResource("4_a50t3")
+
+[node name="Sountrack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_b1mya")
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
