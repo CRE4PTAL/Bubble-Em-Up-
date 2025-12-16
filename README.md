@@ -29,6 +29,7 @@ Projekt zrealizowany zespołowo. Moja rola obejmowała:
 
 ## 💻 Uruchomienie (Godot)
 
-1. Pobierz repozytorium.
-2. Zaimportuj projekt w **Godot Engine**.
-3. Uruchom scenę `Main.tscn`.
+1. Wejdź w zakładkę Releases (po prawej stronie ekranu)
+2. Kliknij "Bubble Em Up - Playable Build"
+3. Pobierz ZIP'a i go rozpakuj
+4. Uruchom BubbleEmUp.exe
